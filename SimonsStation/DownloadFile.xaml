@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1846.4,952</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>742.4,459.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DownloadFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -58,9 +58,11 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Download all csv to destination folder&#xD;&#xA;in_CSVFilenameList must include column&quot;Filename&quot;&#xD;&#xA;in_CSVFileDestinationFolder must end with &quot;\&quot; like:&quot;C:\abc\&quot;&#xD;&#xA;in_StationIP must be like:&quot;192.168.1.2&quot; or &quot;domainname&quot;&#xD;&#xA;" DisplayName="DownloadFile" sap:VirtualizedContainerService.HintSize="241.6,394.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Download all csv to destination folder&#xA;in_CSVFilenameList must include column&quot;Filename&quot;&#xA;in_CSVFileDestinationFolder must end with &quot;\&quot; like:&quot;C:\abc\&quot;&#xA;in_StationIP must be like:&quot;192.168.1.2&quot; or &quot;domainname&quot;&#xA;" DisplayName="DownloadFile" sap:VirtualizedContainerService.HintSize="241.6,394.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtCSVFilenameList" />
       <Variable x:TypeArguments="x:String" Name="CSVFileDestinationFolder" />
@@ -138,13 +140,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtCSVFilenameList]" DisplayName="For Each Row to download file" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtCSVFilenameList]" DisplayName="For Each Row to download file" sap:VirtualizedContainerService.HintSize="306.4,542.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="241.6,393.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Download a file from url to destionation folder" sap:VirtualizedContainerService.HintSize="241.6,393.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="Filename" />
             </Sequence.Variables>
@@ -205,9 +207,7 @@
                 <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
               </ui:HttpClient.Cookies>
               <ui:HttpClient.Headers>
-                <InArgument x:TypeArguments="x:String" x:Key="referer">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="RefererURL" />
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="referer">[RefererURL]</InArgument>
               </ui:HttpClient.Headers>
               <ui:HttpClient.Parameters>
                 <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
@@ -216,7 +216,7 @@
                 <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
               </ui:HttpClient.UrlSegments>
             </ui:HttpClient>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Return code:&quot;+HTTPClientReturnCode.ToString]">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Return code:&quot;+HTTPClientReturnCode.ToString+&#xD;&#xA;&quot;File &quot;+ CSVDestinationFullPathFilename +&quot; Downloaded&quot;]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>

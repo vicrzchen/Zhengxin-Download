@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>850.4,863.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>742.4,863.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -507,9 +507,9 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <Transition.To>
-                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="569.6,924" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
+                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="605.6,1148" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
                               <State.Entry>
-                                <Sequence sap:VirtualizedContainerService.HintSize="524.8,779.2" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                <Sequence sap:VirtualizedContainerService.HintSize="560.8,1003.2" sap2010:WorkflowViewState.IdRef="Sequence_30">
                                   <Sequence.Variables>
                                     <Variable x:TypeArguments="x:String" Name="ScrapyTargetFolderPath" />
                                   </Sequence.Variables>
@@ -518,30 +518,35 @@
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <If Condition="[SystemException is Nothing and BusinessException is Nothing]" sap:VirtualizedContainerService.HintSize="483.2,327.2" sap2010:WorkflowViewState.IdRef="If_12">
+                                  <If Condition="[SystemException is Nothing and BusinessException is Nothing]" sap:VirtualizedContainerService.HintSize="519.2,551.2" sap2010:WorkflowViewState.IdRef="If_12">
                                     <If.Then>
-                                      <Sequence sap:VirtualizedContainerService.HintSize="241.6,177.6" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                      <Sequence sap2010:Annotation.AnnotationText="If success the whole process, Add message into Queue for further download&#xD;&#xA;Queue content is   FolderPath：True FolderPath" DisplayName="Add further download queue" sap:VirtualizedContainerService.HintSize="375.2,401.6" sap2010:WorkflowViewState.IdRef="Sequence_29">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ZXSBSJ_DownloadFolder" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+                                        <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="" AssetName="ZXSBSJ_DownloadFolder" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="333.6,53.6" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
                                           <ui:GetRobotAsset.Value>
                                             <OutArgument x:TypeArguments="x:String">[ScrapyTargetFolderPath]</OutArgument>
                                           </ui:GetRobotAsset.Value>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
                                         </ui:GetRobotAsset>
-                                        <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="QueueForProcessFolder">
+                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_33" Level="Info" Message="[&quot;Downloaded all csv files and create the folder name as &quot;+ScrapyTargetFolderPath]" />
+                                        <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="QueueForProcessFolder">
                                           <ui:AddQueueItem.ItemInformation>
-                                            <InArgument x:TypeArguments="x:String" x:Key="&quot;FolderPath&quot;">
-                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ScrapyTargetFolderPath" />
-                                            </InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="&quot;FolderPath&quot;">[ScrapyTargetFolderPath]</InArgument>
                                           </ui:AddQueueItem.ItemInformation>
                                         </ui:AddQueueItem>
                                       </Sequence>
                                     </If.Then>
                                   </If>
-                                  <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="483.2,319.2" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                                  <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="519.2,319.2" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                                     <TryCatch.Try>
                                       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CloseAllApplications workflow" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
                                         <ui:InvokeWorkflowFile.Arguments>
@@ -550,7 +555,7 @@
                                       </ui:InvokeWorkflowFile>
                                     </TryCatch.Try>
                                     <TryCatch.Catches>
-                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_5">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
