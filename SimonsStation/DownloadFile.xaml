@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>742.4,459.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>389.6,614.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DownloadFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -140,13 +140,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtCSVFilenameList]" DisplayName="For Each Row to download file" sap:VirtualizedContainerService.HintSize="306.4,542.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtCSVFilenameList]" DisplayName="For Each Row to download file" sap:VirtualizedContainerService.HintSize="574.4,723.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Download a file from url to destionation folder" sap:VirtualizedContainerService.HintSize="241.6,393.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Download a file from url to destionation folder" sap:VirtualizedContainerService.HintSize="524.8,574.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="Filename" />
             </Sequence.Variables>
@@ -155,7 +155,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
@@ -191,7 +191,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:MultipleAssign>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start download: &quot;+CSVFileFullDownloadURL]">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start download: &quot;+CSVFileFullDownloadURL]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -199,7 +199,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:LogMessage>
-            <ui:HttpClient Body="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" BodyFormat="application/xml" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="HTTP Request" EndPoint="[CSVFileFullDownloadURL]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="GET" ResourcePath="[CSVDestinationFullPathFilename]" StatusCode="[HTTPClientReturnCode]" TimeoutMS="6000">
+            <ui:HttpClient Body="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" BodyFormat="application/xml" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="HTTP Request" EndPoint="[CSVFileFullDownloadURL]" sap:VirtualizedContainerService.HintSize="483.2,22.4" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="GET" ResourcePath="[CSVDestinationFullPathFilename]" StatusCode="[HTTPClientReturnCode]" TimeoutMS="6000">
               <ui:HttpClient.Attachments>
                 <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
               </ui:HttpClient.Attachments>
@@ -216,14 +216,29 @@
                 <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
               </ui:HttpClient.UrlSegments>
             </ui:HttpClient>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Return code:&quot;+HTTPClientReturnCode.ToString+&#xD;&#xA;&quot;File &quot;+ CSVDestinationFullPathFilename +&quot; Downloaded&quot;]">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:LogMessage>
+            <If Condition="[HTTPClientReturnCode = 200]" DisplayName="Download correctly or not" sap:VirtualizedContainerService.HintSize="483.2,233.6" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Return code:&quot;+HTTPClientReturnCode.ToString+&#xD;&#xA;&quot;    File &quot;+ CSVDestinationFullPathFilename +&quot; Downloaded&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+              </If.Then>
+              <If.Else>
+                <ui:LogMessage sap2010:Annotation.AnnotationText="download not correctly" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,84" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;Return code:&quot;+HTTPClientReturnCode.ToString+&quot;  Something wrong.&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+              </If.Else>
+            </If>
           </Sequence>
         </ActivityAction>
       </ui:ForEachRow.Body>
